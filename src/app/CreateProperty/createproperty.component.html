@@ -1,0 +1,102 @@
+<div class="form-container">
+    <h2>Crear Propiedad</h2>
+    <form (ngSubmit)="createProperty()" #propertyForm="ngForm">
+        <div class="form-body">
+        <div class="form-column">
+      <div class="form-group">
+        <label for="reference">Referencia</label>
+        <input type="number" id="reference" name="reference" [(ngModel)]="property.reference" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Tipo</label>
+        <select id="type" name="type" [(ngModel)]="property.type" required>
+            <option value="Casa">Casa</option>
+            <option value="Piso nuevo">Piso nuevo</option>
+            <option value="Villa">Villa</option>
+            <option value="Local">Local</option>
+          </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="area">Área (m²)</label>
+        <input type="number" id="area" name="area" [(ngModel)]="property.area" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="address">Dirección</label>
+        <input type="text" id="address" name="address" [(ngModel)]="property.address"/>
+      </div>
+  
+      <div class="form-group">
+        <label for="zone">Zona</label>
+        <input type="text" id="zone" name="zone" [(ngModel)]="property.zone" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="offerMode">Modo de Oferta</label>
+        <select id="offerMode" name="offerMode" [(ngModel)]="property.offerMode" required>
+          <option value="Venta">Venta</option>
+          <option value="Alquiler">Alquiler</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+          <label for="sellingPrice">Precio de Venta</label>
+          <input type="number" id="sellingPrice" name="sellingPrice" [(ngModel)]="property.sellingPrice" required />
+        </div>
+        
+        <div class="form-group">
+            <label for="rentalPrice">Precio de Alquiler</label>
+            <input type="number" id="rentalPrice" name="rentalPrice" [(ngModel)]="property.rentalPrice" required />
+        </div>
+        
+        <div class="form-group">
+            <label for="ownerName">Nombre del Propietario</label>
+            <input type="text" id="ownerName" name="ownerName" [(ngModel)]="property.owner.name" required />
+        </div>
+        
+        <div class="form-group">
+            <label for="ownerCellphone">Teléfono del Propietario</label>
+            <input type="tel" id="ownerCellphone" name="ownerCellphone" [(ngModel)]="property.owner.cellphone" required />
+        </div>
+        
+    </div>
+
+    <div class="form-column">
+        <div class="form-group">
+            <label for="office">Oficina</label>
+            <input type="text" id="office" name="office" [(ngModel)]="property.office" required />
+        </div>
+        
+        <div class="form-group">
+            <h3>Estancias</h3>
+            <label for="bedrooms">Habitaciones</label>
+            <input type="number" id="bedrooms" name="bedrooms" [(ngModel)]="property.stays.bedrooms" required />
+            <label for="bathrooms">Baños</label>
+            <input type="number" id="bathrooms" name="bathrooms" [(ngModel)]="property.stays.bathrooms" required />
+            <label for="toiletrooms">Aseos</label>
+            <input type="number" id="toiletrooms" name="toiletrooms" [(ngModel)]="property.stays.toiletrooms" required />
+        <label for="kitchens">Cocinas</label>
+        <input type="number" id="kitchens" name="kitchens" [(ngModel)]="property.stays.kitchens" required />
+        <label for="balcony">Balcón</label>
+        <input type="checkbox" id="balcony" name="balcony" [(ngModel)]="property.stays.balcony"/>
+      </div>
+  
+      <div class="form-group">
+        <h3>Características</h3>
+        <label for="gas">Gas</label>
+        <input type="checkbox" id="gas" name="gas" [(ngModel)]="property.features.gas" />
+        <label for="armoredDoor">Puerta Blindada</label>
+        <input type="checkbox" id="armoredDoor" name="armoredDoor" [(ngModel)]="property.features.armoredDoor" />
+        <label for="parquet">Parquet</label>
+        <input type="checkbox" id="parquet" name="parquet" [(ngModel)]="property.features.parquet" />
+      </div>
+    </div>
+</div>
+  
+      <button type="submit" class="btn-submit">Crear Propiedad</button>
+    </form>
+  </div>
+  
+  

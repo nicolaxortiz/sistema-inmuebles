@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+.logo {
+    height: 100px;
+}
+.login-btn {
+    padding: 10px 20px;
+    background-color: #395169;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.login-btn:hover {
+    background-color: #0056b3;
+}
+nav {
+    background-color: #343a40;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    margin: 0;
+}
+nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+}
+nav ul li a:hover {
+    background-color: #495057;
+}

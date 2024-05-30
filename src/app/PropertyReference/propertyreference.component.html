@@ -1,0 +1,178 @@
+<div class="search-container">
+    <h2>Buscar Inmuebles</h2>
+        <label for="ref">Referencia del Inmueble:</label>
+        <input type="number" id="reference" name="reference" placeholder="Ingresa la referencia del inmueble" [(ngModel)]="reference" />
+        <button (click)="handleSearch()" type="button" class="btn-search">Buscar</button>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <th colspan="9" class="table-separator">Informacion del inmueble</th>
+        </thead>
+
+        <thead>
+            <tr>
+              <th>Referencia</th>
+              <th>Tipo</th>
+              <th>Area</th>
+              <th>Direccion</th>
+              <th *ngIf="properties?.urbanization">Urbanizacion</th>
+              <th *ngIf="properties?.zone">Zona</th>
+              <th>Modo de oferta</th>
+              <th>Precio de venta</th>
+              <th>Precio de alquiler</th>
+              <th>Tamaño</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!properties">
+                <td colspan="8" class="center-text">No hay datos</td>
+            </tr>
+
+            <tr *ngIf="properties"> 
+                <td>{{properties.reference}}</td>
+                <td>{{properties.type}}</td>
+                <td>{{properties.area}}</td>
+                <td>{{properties.address}}</td>
+                <td *ngIf="properties?.urbanization">{{properties.urbanization}}</td>
+                <td *ngIf="properties?.zone">{{properties.zone}}</td>
+                <td>{{properties.offerMode}}</td>
+                <td>$ {{properties.sellingPrice}}</td>
+                <td>$ {{properties.rentalPrice}}</td>
+                <td *ngIf="properties?.parcelSize">{{properties.parcelSize}} m²</td>
+            </tr>
+        </tbody>   
+    </table>
+    
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <th colspan="8" class="table-separator">Habitaciones del inmueble</th>
+        </thead>
+
+        <thead>
+            <tr>
+              <th>Referencia</th>
+              <th>Tipo</th>
+              <th>Area</th>
+              <th>Direccion</th>
+              <th>Modo de oferta</th>
+              <th>Precio de venta</th>
+              <th>Precio de alquiler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!properties">
+                <td colspan="8" class="center-text">No hay datos</td>
+            </tr>
+
+            <tr *ngIf="properties"> 
+                <td>{{properties.reference}}</td>
+                <td>{{properties.type}}</td>
+                <td>{{properties.area}}</td>
+                <td>{{properties.address}}</td>
+                <td>{{properties.offerMode}}</td>
+                <td>$ {{properties.sellingPrice}}</td>
+                <td>$ {{properties.rentalPrice}}</td>
+            </tr>
+        </tbody>   
+    </table>
+    
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <th colspan="8" class="table-separator">Informacion del dueño del inmueble</th>
+        </thead>
+
+        <thead>
+            <tr>
+                <th>Nombre</th>
+              <th>Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!properties">
+                <td colspan="8" class="center-text">No hay datos</td>
+            </tr>
+
+            <tr *ngIf="properties"> 
+                <td>{{properties.owner.name}}</td>
+                <td>{{properties.owner.cellphone}}</td>
+            </tr>
+        </tbody>   
+    </table>
+    
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <th colspan="8" class="table-separator">Informacion de la oficina</th>
+        </thead>
+
+        <thead>
+            <tr>
+              <th>Numero de oficina</th>
+              <th>Oficina</th>
+              <th>Ubicacion</th>
+              <th>Direccion</th>
+              <th>Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!properties">
+                <td colspan="5" class="center-text">No hay datos</td>
+            </tr>
+
+            <tr *ngIf="properties">
+                <td>{{properties.office?.officeNumber}}</td>
+                <td>{{properties.office?.name}}</td>
+                <td>{{properties.office?.city}}</td>
+                <td>{{properties.office?.address}}</td>
+                <td>{{properties.office?.cellphone}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <th colspan="8" class="table-separator">Informacion de las visitas</th>
+        </thead>
+
+        <thead>
+            <tr>
+              <th>Nombre visitante</th>
+              <th>Documento</th>
+              <th>Email</th>
+              <th>Celular</th>
+              <th>Ciudad</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Comentario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="properties?.visits?.length==0 ||  !properties">
+                <td colspan="8" class="center-text">No hay datos</td>
+            </tr>
+            <tr *ngFor="let visita of properties?.visits">
+                <td>{{visita.costumerId.name}} {{visita.costumerId.lastName}}</td>
+                <td>{{visita.costumerId.document}}</td>
+                <td>{{visita.costumerId.email}}</td>
+                <td>{{visita.costumerId.cellphone}}</td>
+                <td>{{visita.costumerId.city}}</td>
+                <td>{{visita.date}}</td>
+                <td>{{visita.hour}}</td>
+                <td>{{visita.comment}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    

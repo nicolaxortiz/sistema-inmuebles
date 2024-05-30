@@ -1,0 +1,45 @@
+<div class="search-container">
+    <h2>Buscar Inmuebles</h2>
+        <label for="ref">Filtro:</label>
+        <select [(ngModel)]="filter" class="filtro-select">
+            <option value="Venta">En venta</option>
+            <option value="Alquiler">En alquiler</option>
+        </select>
+
+        <button (click)="handleSearch()" type="button" class="btn-search">Buscar</button>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Referencia</th>
+              <th>Tipo</th>
+              <th>Area</th>
+              <th>Direccion</th>
+              <th>Modo de oferta</th>
+              <th>Precio de venta</th>
+              <th>Precio de alquiler</th>
+              <th>Dueño</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="properties.length==0">
+                <td colspan="8" class="center-text">No hay datos</td>
+            </tr>
+
+            <tr *ngFor="let property of properties"> 
+                <td>{{property.reference}}</td>
+                <td>{{property.type}}</td>
+                <td>{{property.area}}</td>
+                <td>{{property.address}}</td>
+                <td>{{property.offerMode}}</td>
+                <td>$ {{property.sellingPrice}}</td>
+                <td>$ {{property.rentalPrice}}</td>
+                <td>{{property.owner.name}}</td>
+            </tr>
+        </tbody>   
+    </table>
+    
+</div>
+
