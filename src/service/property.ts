@@ -6,7 +6,16 @@ export interface Owner {
   
 
   export interface Visit {
-    costumerId: Customer; 
+    costumerId: Customer ; 
+    propertyId: string;
+    date: string;
+    hour: string;
+    comment: string;
+  }
+
+  export interface visitCreate {
+    costumerId: string ; 
+    propertyId: string;
     date: string;
     hour: string;
     comment: string;
@@ -30,6 +39,7 @@ export interface Owner {
   }
 
   export interface Office {
+    _id: string,
     officeNumber: number;
     name: string;
     city: string;
@@ -39,6 +49,7 @@ export interface Owner {
   }
 
   export interface Customer {
+    _id: string,
     name: string;
     lastName: string;
     document: number;
@@ -48,6 +59,7 @@ export interface Owner {
   }
   
   export interface Property {
+    _id: string;
     reference: number;
     type?: string; // piso nuevo, piso de ocasión, villa, casa, local
     area: number; // en m^2

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Property } from '../../service/property';
+import { Property, Visit } from '../../service/property';
 import { PropertyService } from '../../service/property.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { PropertyService } from '../../service/property.service';
 
 
 export class PropertyReferenceComponent {
-  title = "PropertyReference"
   reference!: number; // Inicialización en la declaración
   properties: Property | null = null;
+  visits: Visit[]=[];
   
 
   constructor(private propertyService: PropertyService) {}
@@ -25,6 +25,14 @@ export class PropertyReferenceComponent {
   getProperty(): void {
     this.propertyService.getProperty(this.reference).subscribe(response => {
       this.properties = response
+      this.getVisits(this.properties._id);
+    })
+  }
+
+  getVisits(id: string): void {
+    this.propertyService.getVisits(id).subscribe(response => {
+      this.visits = response
+
     })
   }
 

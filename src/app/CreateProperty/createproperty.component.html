@@ -64,12 +64,17 @@
     </div>
 
     <div class="form-column">
-        <div class="form-group">
-            <label for="office">Oficina</label>
-            <input type="text" id="office" name="office" [(ngModel)]="property.office" required />
-        </div>
+
+      <div class="form-group">
+        <label for="type">Oficina</label>
+        <select id="office" name="office" [(ngModel)]="property.office" required>
+          <option *ngFor="let office of offices" [value]="office._id">{{ office.name }}</option>
+          </select>
+      </div>
+
+
         
-        <div class="form-group">
+        <div class="form-group" *ngIf="property.type != 'Local'">
             <h3>Estancias</h3>
             <label for="bedrooms">Habitaciones</label>
             <input type="number" id="bedrooms" name="bedrooms" [(ngModel)]="property.stays.bedrooms" required />
@@ -83,7 +88,7 @@
         <input type="checkbox" id="balcony" name="balcony" [(ngModel)]="property.stays.balcony"/>
       </div>
   
-      <div class="form-group">
+      <div class="form-group" *ngIf="property.type != 'Local'">
         <h3>Características</h3>
         <label for="gas">Gas</label>
         <input type="checkbox" id="gas" name="gas" [(ngModel)]="property.features.gas" />
@@ -92,10 +97,30 @@
         <label for="parquet">Parquet</label>
         <input type="checkbox" id="parquet" name="parquet" [(ngModel)]="property.features.parquet" />
       </div>
+
+      <div class="form-group" *ngIf="property.type == 'Local'">
+        <h3>Características</h3>
+        <label for="frontDoors">Puerta delantera</label>
+        <input type="checkbox" id="frontDoors" name="frontDoors" [(ngModel)]="property.features.frontDoors" />
+        <label for="diaphone">Diafono</label>
+        <input type="checkbox" id="diaphone" name="diaphone" [(ngModel)]="property.features.diaphone" />
+        <label for="air">Aire</label>
+        <input type="checkbox" id="air" name="air" [(ngModel)]="property.features.air" />
+      </div>
+
+      <div class="form-group" *ngIf="property.type == 'Villa'">
+        <label for="parcelSize">Tamaño de parcela</label>
+        <input type="number" id="parcelSize" name="parcelSize" [(ngModel)]="property.parcelSize" required />
+      </div>
+
+      <div class="form-group" *ngIf="property.type == 'Villa'">
+        <label for="urbanization">Urbanizacion</label>
+        <input type="text" id="urbanization" name="urbanization" [(ngModel)]="property.urbanization" required />
+      </div>
     </div>
 </div>
   
-      <button type="submit" class="btn-submit">Crear Propiedad</button>
+<button type="submit" class="btn-submit btn btn-primary" [disabled]="propertyForm.invalid">Crear Propiedad</button>
     </form>
   </div>
   

@@ -22,7 +22,7 @@
               <th>Modo de oferta</th>
               <th>Precio de venta</th>
               <th>Precio de alquiler</th>
-              <th>Tamaño</th>
+              <th *ngIf="properties?.parcelSize">Tamaño</th>
             </tr>
         </thead>
         <tbody>
@@ -50,33 +50,41 @@
 <div class="table-container">
     <table>
         <thead>
-            <th colspan="8" class="table-separator">Habitaciones del inmueble</th>
+            <th colspan="11" class="table-separator">Especificaciones del inmueble</th>
         </thead>
 
         <thead>
             <tr>
-              <th>Referencia</th>
-              <th>Tipo</th>
-              <th>Area</th>
-              <th>Direccion</th>
-              <th>Modo de oferta</th>
-              <th>Precio de venta</th>
-              <th>Precio de alquiler</th>
+              <th>Cuartos</th>
+              <th>Baños</th>
+              <th>Aseo</th>
+              <th>Cocinas</th>
+              <th>Balcon</th>
+              <th>Gas</th>
+              <th>Puerta blindada</th>
+              <th>Parquet</th>
+              <th>Diafono</th>
+              <th>Aire</th>
+              <th>Puerta delantera</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngIf="!properties">
-                <td colspan="8" class="center-text">No hay datos</td>
+                <td colspan="11" class="center-text">No hay datos</td>
             </tr>
 
             <tr *ngIf="properties"> 
-                <td>{{properties.reference}}</td>
-                <td>{{properties.type}}</td>
-                <td>{{properties.area}}</td>
-                <td>{{properties.address}}</td>
-                <td>{{properties.offerMode}}</td>
-                <td>$ {{properties.sellingPrice}}</td>
-                <td>$ {{properties.rentalPrice}}</td>
+                <td>{{properties.stays?.bedrooms}}</td>
+                <td>{{properties.stays?.bathrooms}}</td>
+                <td>{{properties.stays?.toiletrooms}}</td>
+                <td>{{properties.stays?.kitchens}}</td>
+                <td>{{properties.stays?.balcony ? "X" : ""}}</td>
+                <td>{{properties.features?.gas ? "X" : ""}}</td>
+                <td>{{properties.features?.armoredDoor ? "X" : ""}}</td>
+                <td>{{properties.features?.parquet ? "X" : ""}}</td>
+                <td>{{properties.features?.diaphone ? "X" : ""}}</td>
+                <td>{{properties.features?.air ? "X" : ""}}</td>
+                <td>{{properties.features?.frontDoors ? "X" : ""}}</td>
             </tr>
         </tbody>   
     </table>
@@ -159,10 +167,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngIf="properties?.visits?.length==0 ||  !properties">
+            <tr *ngIf="visits.length==0 ||  !visits">
                 <td colspan="8" class="center-text">No hay datos</td>
             </tr>
-            <tr *ngFor="let visita of properties?.visits">
+            <tr *ngFor="let visita of visits">
                 <td>{{visita.costumerId.name}} {{visita.costumerId.lastName}}</td>
                 <td>{{visita.costumerId.document}}</td>
                 <td>{{visita.costumerId.email}}</td>
